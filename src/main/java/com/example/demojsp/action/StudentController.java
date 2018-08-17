@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,9 @@ public class StudentController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<StudentEntity> list(){
         List<StudentEntity> stus = studentJPA.findAll();
-        logger.info(stus.get(0).getBirthday().toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String d = sdf.format(stus.get(0).getBirthday());
+        logger.info(d);
         return stus;
     }
 
@@ -47,13 +50,14 @@ public class StudentController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(){
         StudentEntity stu = new StudentEntity();
-        stu.setId(4);
-        stu.setName("zhangsan");
-        stu.setAge(25);
-        stu.setSex("female");
-        stu.setBirthday(new Date());
+        stu.setId(7);
+        stu.setName("James");
+        stu.setAge(15);
+        stu.setSex("male");
+        stu.setBirthday(new java.sql.Date(new Date().getTime()));
+        //stu.setBirthday(new Date());
         studentJPA.save(stu);
-        studentJPA.saveTest("tangyan",33,"female");
+        //studentJPA.saveTest("tangyan",33,"female");
         return "添加成功！";
     }
 

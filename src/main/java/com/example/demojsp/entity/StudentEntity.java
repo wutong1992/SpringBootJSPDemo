@@ -1,5 +1,7 @@
 package com.example.demojsp.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +23,7 @@ public class StudentEntity implements Serializable {
     @Column(name = "sex")
     private String sex;
 
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", locale = "zh", timezone = "GMT+8")
     @Column(name = "birthday")
     private Date birthday;
 
