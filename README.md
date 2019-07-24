@@ -1,2 +1,2 @@
 # SpringBootJSPDemo
-Spring Boot JSP Demo
+Spring Boot Demo contains Spring Data JPA and JSP pages.
